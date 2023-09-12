@@ -16,7 +16,7 @@ const Page = () => {
     getData();
   }, []);
 
-  return <div>{data?.message}</div>;
+  return <div>{data?.[0]?.label}</div>;
 };
 
 export default Page;
