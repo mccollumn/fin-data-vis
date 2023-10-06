@@ -7,7 +7,7 @@ const Page = () => {
 
   React.useEffect(() => {
     const getData = async () => {
-      const result = await fetch(`/api/hello`);
+      const result = await fetch(`/api/financials/ticker/IBM`);
       console.log("Result:", result);
       const data = await result?.json();
       console.log("Data:", data);
