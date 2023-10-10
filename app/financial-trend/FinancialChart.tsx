@@ -11,95 +11,104 @@ import { ResponsiveLine } from "@nivo/line";
 // you'll often use just a few of them.
 export const FinancialChart = ({ data }: any) => (
   <ResponsiveLine
-    // data={data}
+    data={data}
     animate
     axisBottom={{
-      format: "%b %d",
+      tickSize: 5,
+      tickPadding: 5,
+      tickRotation: 0,
       legend: "time scale",
-      legendOffset: -12,
-      tickValues: "every 2 days",
+      legendOffset: 36,
+      legendPosition: "middle",
+      format: "%Y",
     }}
+    // axisBottom={{
+    //   format: "%b %d",
+    //   legend: "time scale",
+    //   legendOffset: -12,
+    //   tickValues: "every 2 days",
+    // }}
     axisLeft={{
       legend: "linear scale",
       legendOffset: 12,
     }}
     curve="monotoneX"
-    data={[
-      {
-        data: [
-          {
-            x: "2018-01-01",
-            y: 7,
-          },
-          {
-            x: "2018-01-02",
-            y: 5,
-          },
-          {
-            x: "2018-01-03",
-            y: 11,
-          },
-          {
-            x: "2018-01-04",
-            y: 9,
-          },
-          {
-            x: "2018-01-05",
-            y: 12,
-          },
-          {
-            x: "2018-01-06",
-            y: 16,
-          },
-          {
-            x: "2018-01-07",
-            y: 13,
-          },
-          {
-            x: "2018-01-08",
-            y: 13,
-          },
-        ],
-        id: "fake corp. A",
-      },
-      {
-        data: [
-          {
-            x: "2018-01-04",
-            y: 14,
-          },
-          {
-            x: "2018-01-05",
-            y: 14,
-          },
-          {
-            x: "2018-01-06",
-            y: 15,
-          },
-          {
-            x: "2018-01-07",
-            y: 11,
-          },
-          {
-            x: "2018-01-08",
-            y: 10,
-          },
-          {
-            x: "2018-01-09",
-            y: 12,
-          },
-          {
-            x: "2018-01-10",
-            y: 9,
-          },
-          {
-            x: "2018-01-11",
-            y: 7,
-          },
-        ],
-        id: "fake corp. B",
-      },
-    ]}
+    // data={[
+    //   {
+    //     data: [
+    //       {
+    //         x: "2018-01-01",
+    //         y: 7,
+    //       },
+    //       {
+    //         x: "2018-01-02",
+    //         y: 5,
+    //       },
+    //       {
+    //         x: "2018-01-03",
+    //         y: 11,
+    //       },
+    //       {
+    //         x: "2018-01-04",
+    //         y: 9,
+    //       },
+    //       {
+    //         x: "2018-01-05",
+    //         y: 12,
+    //       },
+    //       {
+    //         x: "2018-01-06",
+    //         y: 16,
+    //       },
+    //       {
+    //         x: "2018-01-07",
+    //         y: 13,
+    //       },
+    //       {
+    //         x: "2018-01-08",
+    //         y: 13,
+    //       },
+    //     ],
+    //     id: "fake corp. A",
+    //   },
+    //   {
+    //     data: [
+    //       {
+    //         x: "2018-01-04",
+    //         y: 14,
+    //       },
+    //       {
+    //         x: "2018-01-05",
+    //         y: 14,
+    //       },
+    //       {
+    //         x: "2018-01-06",
+    //         y: 15,
+    //       },
+    //       {
+    //         x: "2018-01-07",
+    //         y: 11,
+    //       },
+    //       {
+    //         x: "2018-01-08",
+    //         y: 10,
+    //       },
+    //       {
+    //         x: "2018-01-09",
+    //         y: 12,
+    //       },
+    //       {
+    //         x: "2018-01-10",
+    //         y: 9,
+    //       },
+    //       {
+    //         x: "2018-01-11",
+    //         y: 7,
+    //       },
+    //     ],
+    //     id: "fake corp. B",
+    //   },
+    // ]}
     enablePointLabel
     // height={400}
     margin={{
@@ -117,12 +126,12 @@ export const FinancialChart = ({ data }: any) => (
     // pointSymbol={function noRefCheck() {}}
     useMesh
     // width={900}
-    xFormat="time:%Y-%m-%d"
+    xFormat="time:%Y%"
     xScale={{
       format: "%Y-%m-%d",
-      precision: "day",
+      precision: "year",
       type: "time",
-      useUTC: false,
+      // useUTC: false,
     }}
     yScale={{
       type: "linear",
