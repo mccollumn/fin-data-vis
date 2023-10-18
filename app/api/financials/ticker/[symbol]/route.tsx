@@ -10,26 +10,33 @@ export async function GET(
   }
 ) {
   const symbol = params.symbol;
-  // New instance of MongoClient with connection string
-  // for Cosmos DB
-  const url = process.env.DB_CONNECTION_STRING || "";
-  const client = new MongoClient(url);
 
-  // Use connect method to connect to the server
-  await client.connect();
+  try {
+    // New instance of MongoClient with connection string
+    // for Cosmos DB
+    const url = process.env.DB_CONNECTION_STRING || "";
+    const client = new MongoClient(url);
 
-  // Database reference with creation if it does not already exist
-  const db = client.db(`financialsDB`);
-  console.log(`database:\t${db.databaseName}\n`);
+    // Use connect method to connect to the server
+    await client.connect();
 
-  // Collection reference with creation if it does not already exist
-  const collection = db.collection("fundamentals");
-  console.log(`collection:\t${collection.collectionName}\n`);
+    // Database reference with creation if it does not already exist
+    const db = client.db(`financialsDB`);
+    console.log(`database:\t${db.databaseName}\n`);
 
-  const result = await collection
-    .find({ ticker: symbol })
-    .sort({ _id: 1 })
-    .toArray();
+    // Collection reference with creation if it does not already exist
+    const collection = db.collection("fundamentals");
+    console.log(`collection:\t${collection.collectionName}\n`);
 
-  return NextResponse.json(result);
+    const result = await collection
+      .find({ ticker: symbol })
+      .sort({ _id: 1 })
+      .toArray();
+
+    await client.close();
+    return NextResponse.json(result);
+  } catch (error: any) {
+    console.log(error.message);
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
 }
