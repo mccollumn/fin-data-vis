@@ -31,8 +31,11 @@ jobs:
           api_location: "" # Api source code path - optional
           output_location: "" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
-        env: 
+        env:
           DB_CONNECTION_STRING: ${{ secrets.DB_CONNECTION_STRING }}
+      - name: Log stuff
+        run: |
+          echo '***Test***'
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
