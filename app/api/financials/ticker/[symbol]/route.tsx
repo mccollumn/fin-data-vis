@@ -10,6 +10,7 @@ export async function GET(
   }
 ) {
   const symbol = params.symbol;
+  const testVar = process.env.TEST;
 
   try {
     // New instance of MongoClient with connection string
@@ -37,6 +38,9 @@ export async function GET(
     return NextResponse.json(result);
   } catch (error: any) {
     console.log(error.message);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json(
+      { error: `${error.message} - ${testVar}` },
+      { status: 500 }
+    );
   }
 }
