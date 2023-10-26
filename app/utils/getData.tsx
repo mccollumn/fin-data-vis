@@ -1,6 +1,7 @@
-"use server";
+// "use server";
 
 import { MongoClient } from "mongodb";
+import "server-only";
 
 const getData = async () => {
   // New instance of MongoClient with connection string

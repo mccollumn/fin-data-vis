@@ -1,6 +1,7 @@
-"use server";
+// "use server";
 
 import getData from "../utils/getData";
+import "server-only";
 
 const Server = async () => {
   const data = await getData();
