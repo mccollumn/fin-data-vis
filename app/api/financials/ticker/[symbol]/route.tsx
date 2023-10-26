@@ -35,6 +35,7 @@ export async function GET(
       .toArray();
 
     await client.close();
+    console.log("testVar:", testVar);
     return NextResponse.json(result);
   } catch (error: any) {
     console.log(error.message);
