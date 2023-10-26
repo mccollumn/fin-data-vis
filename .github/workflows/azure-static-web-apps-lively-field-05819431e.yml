@@ -36,7 +36,7 @@ jobs:
       - name: Log stuff
         run: |
           echo '***Test***'
-          echo ${{ secrets.DB_CONNECTION_STRING }}
+          echo $DB_CONNECTION_STRING
           echo ${{ vars.TEST }}
 
   close_pull_request_job:
