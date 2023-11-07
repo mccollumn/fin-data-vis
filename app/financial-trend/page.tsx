@@ -15,7 +15,7 @@ const FinancialTrend = () => {
 
   React.useEffect(() => {
     const getData = async () => {
-      const result = await fetch(`/api/financials/ticker/?symbol=${symbol}`);
+      const result = await fetch(`/api/financials/?symbol=${symbol}`);
       console.log("Result:", result);
       const data = await result?.json();
       console.log("Data:", data);
