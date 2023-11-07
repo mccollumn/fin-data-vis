@@ -33,12 +33,6 @@ jobs:
           ###### End of Repository/Build Configurations ######
         env:
           DB_CONNECTION_STRING: ${{ secrets.DB_CONNECTION_STRING }}
-          TEST: "My successful test"
-      - name: Log stuff
-        run: |
-          echo '***Test***'
-          echo $DB_CONNECTION_STRING
-          echo $TEST
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'

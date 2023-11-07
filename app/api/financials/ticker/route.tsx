@@ -1,16 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { MongoClient } from "mongodb";
 
-export async function GET(
-  request: NextRequest,
-  {
-    params,
-  }: {
-    params: { symbol: string };
-  }
-) {
-  const symbol = params.symbol;
-  const testVar = process.env.TEST;
+export async function GET(request: NextRequest) {
+  const symbol = request.nextUrl.searchParams.get("symbol");
 
   try {
     // New instance of MongoClient with connection string
@@ -35,13 +27,9 @@ export async function GET(
       .toArray();
 
     await client.close();
-    console.log("testVar:", testVar);
     return NextResponse.json(result);
   } catch (error: any) {
     console.log(error.message);
-    return NextResponse.json(
-      { error: `${error.message} - ${testVar}` },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: `${error.message}` }, { status: 500 });
   }
 }
