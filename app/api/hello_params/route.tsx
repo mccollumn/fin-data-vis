@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { MongoClient } from "mongodb";
 
 export async function GET(request: NextRequest) {
+  const symbol = request.nextUrl.searchParams.get("symbol");
+
   // New instance of MongoClient with connection string
   // for Cosmos DB
   const url = process.env.DB_CONNECTION_STRING || "";
@@ -20,5 +22,5 @@ export async function GET(request: NextRequest) {
 
   const result = await collection.find({}).sort({ _id: 1 }).limit(1).toArray();
 
-  return NextResponse.json(result);
+  return NextResponse.json({ result, symbol });
 }
