@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 // import { MongoClient } from "mongodb";
 
 export async function GET(request: NextRequest) {
-  const symbol = request.nextUrl.searchParams.get("symbol");
+  // const symbol = request.nextUrl.searchParams.get("symbol");
+  const symbol = null;
   const isPopulated = !!process.env.DB_CONNECTION_STRING;
 
   // // New instance of MongoClient with connection string
