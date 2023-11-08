@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 // import { MongoClient } from "mongodb";
 
+const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
+
 export async function GET(request: NextRequest) {
-  // const symbol = request.nextUrl.searchParams.get("symbol");
-  const symbol = null;
-  const isPopulated = !!process.env.DB_CONNECTION_STRING;
+  const symbol = request.nextUrl.searchParams.get("symbol");
+  const isPopulated = !!DB_CONNECTION_STRING;
 
   // // New instance of MongoClient with connection string
   // // for Cosmos DB

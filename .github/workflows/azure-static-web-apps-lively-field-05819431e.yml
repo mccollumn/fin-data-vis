@@ -18,6 +18,9 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: true
+      # - script: |
+      #     echo "JWT_SECRET=$(JWT_SECRET)" >> .env.local
+      #     displayName: "Create .env.local"
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
