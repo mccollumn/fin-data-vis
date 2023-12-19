@@ -35,6 +35,7 @@ const FinancialTrend = () => {
           ...prev,
           [current.key]: {
             id: current.key,
+            label: current.label,
             data: [
               ...previousPoints,
               { x: new Date(current.startDate), y: current.value },
