@@ -3,6 +3,7 @@
 import React from "react";
 import { useSearchParams } from "next/navigation";
 import { FinancialChart } from "./FinancialChart";
+import { StandardPage } from "../components/StandardPage";
 
 const FinancialTrend = () => {
   const searchParams = useSearchParams();
@@ -49,9 +50,15 @@ const FinancialTrend = () => {
   console.log("Selected Financials:", selectedFinancials);
 
   return (
-    <div style={{ height: "500px" }}>
-      <FinancialChart data={selectedFinancials} />
-    </div>
+    <StandardPage
+      title="Financials"
+      description="Balance sheet"
+      CallToAction="CLICK ME"
+    >
+      <div style={{ height: "500px" }}>
+        <FinancialChart data={selectedFinancials} />
+      </div>
+    </StandardPage>
   );
 };
 
