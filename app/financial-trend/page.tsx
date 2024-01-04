@@ -4,15 +4,13 @@ import React from "react";
 import { useSearchParams } from "next/navigation";
 import { FinancialChart } from "./FinancialChart";
 import { StandardPage } from "../components/StandardPage";
+import { ReportSelector } from "./ReportSelector";
 
 const FinancialTrend = () => {
   const searchParams = useSearchParams();
   const symbol = searchParams.get("symbol");
   const [data, setData] = React.useState<any>();
-  const [selectedKeys, setSelectedKeys] = React.useState([
-    "current_liabilities",
-    "current_assets",
-  ]);
+  const [selectedKeys, setSelectedKeys] = React.useState<any>([]);
 
   React.useEffect(() => {
     const getData = async () => {
@@ -49,11 +47,16 @@ const FinancialTrend = () => {
 
   console.log("Selected Financials:", selectedFinancials);
 
+  const onSelect = (event: React.SyntheticEvent, options: any) => {
+    if (!options) return;
+    setSelectedKeys(options.map((option: any) => option.value));
+  };
+
   return (
     <StandardPage
       title="Financials"
       description="Balance sheet"
-      CallToAction="CLICK ME"
+      CallToAction={<ReportSelector data={data} onChange={onSelect} />}
     >
       <div style={{ height: "500px" }}>
         <FinancialChart data={selectedFinancials} />
