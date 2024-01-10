@@ -27,21 +27,21 @@ const FinancialTrend = () => {
     if (!data) return [];
     const tranformData = data
       .filter((financial: any) => selectedKeys.includes(financial.key))
-      .filter((financial: any) => financial.fiscalPeriod === "FY")
-      .reduce((prev: any, current: any) => {
-        const previousPoints = prev[current.key]?.data || [];
-        return {
-          ...prev,
-          [current.key]: {
-            id: current.key,
-            label: current.label,
-            data: [
-              ...previousPoints,
-              { x: new Date(current.startDate), y: current.value },
-            ],
-          },
-        };
-      }, {});
+      .filter((financial: any) => financial.fiscalPeriod === "FY");
+    // .reduce((prev: any, current: any) => {
+    //   const previousPoints = prev[current.key]?.data || [];
+    //   return {
+    //     ...prev,
+    //     [current.key]: {
+    //       id: current.key,
+    //       label: current.label,
+    //       data: [
+    //         ...previousPoints,
+    //         { x: new Date(current.startDate), y: current.value },
+    //       ],
+    //     },
+    //   };
+    // }, {});
     return Object.values(tranformData);
   }, [data, selectedKeys]);
 
@@ -59,7 +59,7 @@ const FinancialTrend = () => {
       CallToAction={<ReportSelector data={data} onChange={onSelect} />}
     >
       <div style={{ height: "500px" }}>
-        <FinancialChart data={selectedFinancials} />
+        <FinancialChart data={selectedFinancials} selectedKeys={selectedKeys} />
       </div>
     </StandardPage>
   );
