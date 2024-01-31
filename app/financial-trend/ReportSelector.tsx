@@ -18,6 +18,12 @@ export const ReportSelector = ({ data, onChange }: ReportSelectorProps) => {
   );
 };
 
+/**
+ * Retrieves the options from the provided data.
+ *
+ * @param data - The data to retrieve options from.
+ * @returns An array of options.
+ */
 const getOptions = (data: any) => {
   if (!data) return [];
   const optionMap = data.reduce((previous: any, current: any) => {

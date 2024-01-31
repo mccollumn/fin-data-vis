@@ -3,6 +3,13 @@
 import { LineChart } from "@mui/x-charts";
 import React from "react";
 
+/**
+ * Renders a financial chart component.
+ *
+ * @param data - The financial data to be displayed on the chart.
+ * @param selectedKeys - The selected keys for filtering the data.
+ * @returns The rendered financial chart component.
+ */
 export const FinancialChart = ({ data, selectedKeys }: any) => {
   console.log("FinancialChart data:", data);
   const chartData: any = React.useMemo(
@@ -25,6 +32,13 @@ export const FinancialChart = ({ data, selectedKeys }: any) => {
   );
 };
 
+/**
+ * Retrieves the chart data based on the provided data and selected keys.
+ *
+ * @param data The data used to generate the chart.
+ * @param selectedKeys The selected keys used to filter the data.
+ * @returns The chart data.
+ */
 const getChartData = (data: any, selectedKeys: any) => {
   if (!data) return [];
   const tranformData = data
