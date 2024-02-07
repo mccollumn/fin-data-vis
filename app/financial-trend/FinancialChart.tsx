@@ -18,14 +18,34 @@ export const FinancialChart = ({ data, selectedKeys }: any) => {
   );
   if (!data || !data.length) return null;
   console.log("Chart data:", chartData);
+
+  const currencyFormatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format;
+
   return (
     <LineChart
       dataset={chartData}
-      xAxis={[{ dataKey: "year" }]}
+      margin={{ left: 100 }}
+      xAxis={[
+        {
+          dataKey: "year",
+          valueFormatter: (value: any) => value.toString(),
+          tickMinStep: 1,
+        },
+      ]}
+      yAxis={[
+        {
+          valueFormatter: (value: any) =>
+            `$${(value / 1000000).toLocaleString()} M`,
+        },
+      ]}
       series={selectedKeys.map((selected: any) => {
         return {
           dataKey: selected.value,
           label: selected.label,
+          valueFormatter: currencyFormatter,
         };
       })}
     />

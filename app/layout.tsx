@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body style={{ padding: "24px" }}>{children}</body>
     </html>
   );
 }
